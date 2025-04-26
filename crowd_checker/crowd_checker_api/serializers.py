@@ -1,14 +1,30 @@
 from rest_framework import serializers
 
-from .models import Establishments, EstablishmentStatus
+from .models import Establishments, EstablishmentStatus, GeoLocation, Location, GteSmallWithReviewDate, \
+    GteSmallWithoutReviewDate
 
 
-### TO-DO: I want to use gRPC (is it possible in django?)
+class GteSmallWithReviewDateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GteSmallWithReviewDate
+        fields = '__all__'
 
-# This is to serialize the model into json including all fields of the model.
+class GteSmallWithoutReviewDateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GteSmallWithoutReviewDate
+        fields = '__all__'
 
 
-# Abstraction and Polymorphism
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = '__all__'
+
+class GeoLocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GeoLocation
+        fields = '__all__'
+
 
 class EstablishmentSerializer(serializers.ModelSerializer):
     class Meta:
