@@ -15,6 +15,10 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+GDAL_LIBRARY_PATH = "/opt/homebrew/Cellar/gdal/3.10.2/lib/libgdal.dylib"
+GDAL_DATA ="/opt/homebrew/Cellar/gdal/3.10.2/share/gdal"
+GEOS_LIBRARY_PATH = "/opt/homebrew/Cellar/geos/3.13.0/lib/libgeos_c.dylib"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -38,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'crowd_checker_api'
+    'crowd_checker_api',
+    'django.contrib.gis'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +82,7 @@ WSGI_APPLICATION = 'crowd_checker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'crowd_checker',
         'USER': 'user1',
         'PASSWORD': '',
